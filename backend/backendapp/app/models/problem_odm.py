@@ -1,4 +1,5 @@
-from mongoengine import IntField, DictField
+from mongoengine import Document, SequenceField, IntField, DictField, StringField
+from mongoengine.queryset.manager import QuerySetManager
 
 class Problem(Document):
     objects: QuerySetManager
@@ -11,4 +12,4 @@ class Problem(Document):
     judge_method = StringField(max_length=255, required=True)
     ac_number = IntField(default=0)
     submission_number = IntField(default=0)
-	status = IntField(default=0)
+    status = IntField(default=0)

@@ -4,7 +4,8 @@ import logging
 import mongoengine as me
 from fastapi import FastAPI
 
-from routes import register_routes
+from app.services import UserService
+from app.routes import register_routes, register_auth_routes
 from config import Settings
 
 def create_app() -> FastAPI:
@@ -28,6 +29,8 @@ def create_app() -> FastAPI:
     )
     me.connect(db=settings.MONGO_DB, host=mongo_connection)
 
+    app.state.user_service = UserService
     register_routes(app)
+    register_auth_routes(app)
     
     return app

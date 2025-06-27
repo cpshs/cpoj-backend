@@ -5,3 +5,5 @@ requests==2.32.4
 mongoengine==0.29.1
 PyJWT==2.9.0
 pydantic-settings==2.10.1
+pydantic[email]==2.10.1
+passlib[bcrypt]==1.7.4

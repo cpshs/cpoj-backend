@@ -1,4 +1,8 @@
-from mongoengine import ReferenceField
+from mongoengine import Document, SequenceField, ReferenceField, StringField, ListField
+from mongoengine.queryset.manager import QuerySetManager
+
+from .user_odm import User
+from .problem_odm import Problem
 
 class Discussion(Document):
     objects: QuerySetManager
