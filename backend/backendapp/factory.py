@@ -1,4 +1,5 @@
 from queue import Queue
+import logging
 
 import mongoengine as me
 from fastapi import FastAPI
@@ -9,8 +10,16 @@ from config import Settings
 def create_app() -> FastAPI:
     app = FastAPI()
     settings = Settings()
+    
+    logger = logging.getLogger(__name__)
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s [%(levelname)s] %(message)s"
+    )
+    app.state.logger = logger
 
     app.state.queue = Queue()
+    app.state.url = settings.BACKEND_URL
 
     mongo_connection = (
             "mongodb://"
