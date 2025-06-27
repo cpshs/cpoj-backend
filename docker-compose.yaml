@@ -3,11 +3,9 @@ version: '3.8'
 services:
   app:
     build: ./backend
-    container_name: judge-host
+    container_name: judge-backend
     ports:
       - "8000:8000"
-    environment:
-      - JUDGE_API=http://go-judge:5050
     depends_on:
       - mongodb
       - redis
@@ -27,7 +25,7 @@ services:
 
   redis:
     image: "redis:latest"
-    container_name: redis_server
+    container_name: redis-server
     volumes:
       - data:/data
     restart: always
