@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  app:
+    build: ./backend
+    container_name: judge-host
+    ports:
+      - "8000:8000"
+    environment:
+      - JUDGE_API=http://go-judge:5050
+    depends_on:
+      - mongodb
+      - redis
+    networks:
+      - backend
+
+  mongodb:
+    image: "mongo:latest"
+    container_name: mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: abc123
+    volumes:
+      - ./data:/data/db
+    networks:
+      - backend
+
+  redis:
+    image: "redis:latest"
+    container_name: redis_server
+    volumes:
+      - data:/data
+    restart: always
+    networks:
+      - backend
+
+volumes:
+  data:
+
+networks:
+  backend:
+    driver: bridge
+
