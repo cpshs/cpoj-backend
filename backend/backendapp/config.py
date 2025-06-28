@@ -7,6 +7,7 @@ class Settings(BaseSettings):
     MONGO_PASSWORD: str = "abc123"
     MONGO_DB: str = "oj"
     REDIS_HOST: str = "redis-server"
+    JWT_SECRET: str = "MWFzZFthcGtpc2RpYWRvaWFob3FlMjMK"
     DEBUG: bool = False
 
     class Config:

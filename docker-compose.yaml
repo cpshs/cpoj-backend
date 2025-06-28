@@ -10,6 +10,7 @@ services:
       - mongodb
       - redis
     volumes:
+      - ./problems:/problems
       - ./.env:/opt/app/.env
     networks:
       - backend
@@ -20,6 +21,8 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: abc123
+    ports:
+      - "127.0.0.1:27017:27017"
     volumes:
       - ./data:/data/db
     networks:

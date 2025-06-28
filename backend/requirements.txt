@@ -7,3 +7,5 @@ PyJWT==2.9.0
 pydantic-settings==2.10.1
 pydantic[email]==2.10.1
 passlib[bcrypt]==1.7.4
+python-multipart==0.0.20
+PyYAML==6.0.2

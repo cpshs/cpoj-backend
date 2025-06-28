@@ -23,7 +23,7 @@ def register_auth_routes(app: FastAPI):
 
     @app.post("/login")
     def login(form: LoginForm):
-        token = app.user_service.login(form.login, form.password)
+        token = app.state.user_service.login(form.login, form.password)
         if token:
             return {"access_token": token, "token_type": "bearer"}
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid credentials")

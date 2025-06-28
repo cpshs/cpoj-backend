@@ -1,0 +1,7 @@
+problem:
+    title: two-num-adder
+    judge_method: default
+    hidden-subtasks:
+        - hidden-tasks
+    tags:
+        - basic
